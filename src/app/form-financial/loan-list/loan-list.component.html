@@ -1,0 +1,20 @@
+<div class="flex justify-content-center mt-2 me-4">
+  <p-card [style]="{ width: '400px' }">
+    <h3>{{ loan?.borrowName }}</h3>
+    <p>เงินต้น: {{ loan.principal | number }}</p>
+    <p>อัตราดอกเบี้ยและรูปแบบการคำนวณ: {{ loan?.tax }} per {{ loan.taxcal }}</p>
+    <p>ระยะเวลากู้ยืม (ปี): {{ loan?.years }}</p>
+    <p>จำนวนดอกเบี้ยที่ลูกค้าต้องจ่าย : {{ loan.total | number }}</p>
+
+    <ng-template pTemplate="footer">
+      <p-button
+        label="Close"
+        icon="pi pi-times"
+        styleClass="p-button-secondary"
+        [style]="{ 'margin-left': '.5em' }"
+        type="button"
+        (click)="onDelete()"
+      ></p-button>
+    </ng-template>
+  </p-card>
+</div>

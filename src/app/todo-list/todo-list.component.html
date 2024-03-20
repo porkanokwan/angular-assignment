@@ -1,0 +1,70 @@
+<!-- <h2>Todo List</h2>
+<div class="container">
+  <div class="row">
+    <div class="input-group my-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="do something"
+        (input)="onChageInput($event)"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="do something"
+        [(ngModel)]="newTodo"
+        maxlength="100"
+      />
+      <button
+        class="btn btn-outline-primary"
+        type="button"
+        (click)="onAddTodo()"
+      >
+        Add
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <app-todo-item
+      *ngFor="let todo of todoList; let i = index"
+      [todo]="todo"
+      [index]="i"
+      (deleteTodo)="onDeleteTodo($event)"
+    ></app-todo-item>
+  </div>
+</div> -->
+<h2>Todo List</h2>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="todoForm">
+      <div class="input-group my-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="do something"
+          [(ngModel)]="newTodo"
+          maxlength="100"
+          formControlName="todo"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="onAddTodo()"
+        >
+          Add
+        </button>
+      </div>
+      <p *ngIf="todoForm.get('todo').invalid && todoForm.get('todo').touched">
+        Please Enter Todo!!
+      </p>
+    </form>
+  </div>
+  <div class="row">
+    <app-todo-item
+      *ngFor="let todo of todoList; let i = index"
+      [todo]="todo"
+      [index]="i"
+      (deleteTodo)="onDeleteTodo($event)"
+    ></app-todo-item>
+  </div>
+</div>

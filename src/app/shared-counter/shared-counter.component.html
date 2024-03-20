@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <h2>Shared Counter</h2>
+  <br />
+  <div class="row">
+    <div>
+      Total: {{ countNumber }}
+      <span
+        ><button class="btn btn-primary ms-4" (click)="onAddCounter()">
+          Add Counter
+        </button></span
+      >
+    </div>
+  </div>
+  <div class="row">
+    <app-counter-item
+      *ngFor="let count of counts; let i = index"
+      [countItem]="count"
+      [index]="i"
+      (plusCount)="onPlusCounter($event)"
+      (minusCount)="onMinusCounter($event)"
+      (deleteCount)="onDeleteCounter($event)"
+    ></app-counter-item>
+  </div>
+</div>
